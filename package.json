@@ -1,0 +1,54 @@
+{
+  "name": "omni-code-judge",
+  "version": "1.0.0",
+  "description": "Omni-Code-Judge — AI-powered code architecture & security evaluator. Five-dimension static analysis (AST) plus an LLM senior-architect review, with a hardcore markdown battle report.",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "omni-judge": "bin/judge.js"
+  },
+  "files": [
+    "bin",
+    "dist/src",
+    "examples",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "judge": "node bin/judge.js",
+    "test": "npm run build && node --test dist/tests/smoke.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "smoke": "node bin/judge.js examples/bad-code.ts --no-ai",
+    "smoke:ai": "node bin/judge.js examples/bad-code.ts --ai",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "keywords": [
+    "code-review",
+    "static-analysis",
+    "ast",
+    "complexity",
+    "security",
+    "maintainability",
+    "test-coverage",
+    "design-patterns",
+    "llm",
+    "aether",
+    "typescript"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.28.0",
+    "aether-llm": "file:../dsh-aether-ai/packages/aether-llm"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
